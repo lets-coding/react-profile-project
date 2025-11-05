@@ -1,0 +1,297 @@
+/* =======================
+   Global & Root
+======================= */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1c1e;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #e0e0e0;
+}
+
+/* =======================
+   Layout
+======================= */
+.app-container {
+  display: flex;
+  height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.left-panel {
+  flex: 3;
+  overflow-y: auto;
+  border-radius: 16px;
+}
+
+.right-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+/* =======================
+   Widgets
+======================= */
+.widget {
+  flex: 1;
+  background-color: #171717;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: transform 0.3s ease;
+}
+
+.widget:hover {
+  transform: translateY(-2px);
+}
+
+/* =======================
+   Tabs
+======================= */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  background: #000;
+  padding: 10px 15px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  margin: 0 auto 20px auto;
+}
+
+.tab {
+  padding: 5px 20px;
+  background: none;
+  color: #ccc;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background: #333;
+  color: #fff;
+}
+
+.tab.active {
+  background: #333;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.tab-content {
+  padding: 10px 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tab-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tab-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+/* =======================
+   Gallery Slider
+======================= */
+.gallery-widget .gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 20px;
+  background: #000;
+  border-radius: 30px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-btn {
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: none;
+  background: #444851;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.nav-btn {
+  background-color: #23272b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Gallery Slider */
+.gallery-grid {
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-item {
+  flex: 0 0 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.2);
+}
+
+.empty-msg {
+  color: #777;
+  text-align: center;
+  padding: 20px;
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: row;
+    padding: 15px;
+  }
+  .widget {
+    padding: 16px;
+  }
+  .tab {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .left-panel {
+    flex: 2;
+    overflow-y: auto;
+    border-radius: 16px;
+  }
+  .tabs {
+    padding: 10px 10px;
+  }
+  .tab-content {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    flex-direction: column;
+    padding: 12px;
+    gap: 15px;
+  }
+  .left-panel {
+    display: none;
+  }
+  .widget {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .tabs {
+    flex-wrap: wrap;
+    border-radius: 25px;
+    padding: 8px;
+    gap: 8px;
+  }
+  .tab {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+  }
+  .tab-content {
+    font-size: 13px;
+  }
+  .gallery-widget .gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .add-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+  }
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .gallery-item {
+    flex: 0 0 100px;
+    height: 100px;
+  }
+  .gallery-img {
+    height: 100%;
+  }
+  .gallery-grid {
+    flex-wrap: nowrap;
+  }
+  .title {
+    font-size: 15px;
+  }
+}
